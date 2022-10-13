@@ -1,1 +1,206 @@
-ádasfasfsa
+#include<iostream>
+using namespace std;
+
+struct SV{
+	string maSo, ten, Lop, ngaySinh, diemRenLuyen;
+	double anten, tinHieu, tinHoc, lapTrinh, tiengAnh;
+	void in(){
+		cout<<"Ma so :"<<maSo<<endl;
+		cout<<"Ten Sinhvien: "<<ten<<endl;
+		cout<<"Lop: "<<Lop<<endl;
+		cout<<"Ngay sinh: "<<ngaySinh<<endl;
+		cout<<"Anten: "<<anten<<endl;
+		cout<<"Tin Hieu: "<<tinHieu<<endl;
+		cout<<"Tin Hoc: "<<tinHoc<<endl;
+		cout<<"Lap Trinh: "<<lapTrinh<<endl;
+		cout<<"Tieng Anh: "<<tiengAnh<<endl;
+		cout<<"Trung binh: "<<(tinHieu + lapTrinh + tinHoc + tiengAnh)/4<<endl;
+		
+	}
+	
+	void nhap(){
+		cout<<"Ma so :";
+		cin>>maSo;
+		cout<<"Ten Sinhvien :";
+		cin>>ten;
+		cout<<"Lop: ";
+		cin>>Lop;
+		cout<<"Ngay sinh: ";
+		cin>>ngaySinh;
+		cout<<"Cac mon hoc: "<<endl;
+		cout<<"Anten: ";
+		cin>>anten;
+		do{
+			if(anten<0 || anten >10){
+				cout<<"Nhap sai, Nhap lai: ";
+				cin>>anten;
+			}
+		}while(anten<0 || anten>10);
+		cout<<"Tin Hieu: ";
+		cin>>tinHieu;
+		do{
+			if(tinHieu < 0 || tinHieu > 10){
+				cout<<"Nhap sai, Nhap lai: ";
+				cin>>tinHieu;
+			}
+		}while(tinHieu < 0 || tinHieu > 10);
+		cout<<"Tin Hoc: ";
+		cin>>tinHoc;
+		do{
+			if(tinHoc < 0 || tinHoc > 10){
+				cout<<"Nhap sai, Nhap lai: ";
+				cin>>tinHoc;
+			}
+		}while(tinHoc < 0 || tinHoc > 10);
+		cout<<"Lap Trinh: ";
+		cin>>lapTrinh;
+		do{
+			if(lapTrinh < 0 || lapTrinh > 10){
+				cout<<"Nhap sai, Nhap lai: ";
+				cin>>lapTrinh;
+			}
+		}while(lapTrinh < 0 || lapTrinh > 10);
+		cout<<"Tieng Anh: ";
+		cin>>tiengAnh;
+		do{
+			if(tiengAnh < 0 || tiengAnh > 10){
+				cout<<"Nhap sai, Nhap lai: ";
+				cin>>tiengAnh;
+			}
+		}while(tiengAnh < 0 || tiengAnh > 10);
+	}
+};
+
+void nhap(SV &a){
+	    cout<<"Ma so :";
+		cin>>a.maSo;
+		cout<<"Ten Sinhvien :";
+		cin>>a.ten;
+		cout<<"Lop: ";
+		cin>>a.Lop;
+		cout<<"Ngay sinh: ";
+		cin>>a.ngaySinh;
+		cout<<"Cac mon hoc: "<<endl;
+		cout<<"Anten: ";
+		cin>>a.anten;
+		cout<<"Tin Hieu: ";
+		cin>>a.tinHieu;
+		cout<<"Tin Hoc: ";
+		cin>>a.tinHoc;
+		cout<<"Lap Trinh: ";
+		cin>>a.lapTrinh;
+		cout<<"Tieng Anh: ";
+		cin>>a.tiengAnh;
+}
+
+void inDanhSach(SV a[], int n){
+	for(int i=0;i<n;i++){
+		cout<<"***Sinh Vien : "<< i+1 <<endl;
+		a[i].in();
+	}
+}
+
+void xoaTongSV(SV a[], int &n){
+    for(int i=0;i<=n;i++){
+    	a[i] = a[i+1];
+    	n--;
+    }
+}
+
+void kiemTraMasoTonTai(SV a[], int n, string maSo) {
+	cout<<"maSo(test): ";
+	cin>>maSo;
+	for(int i = 0; i <n; i++){
+		if(a[i].maSo == maSo){
+		   cout<<"Ma so can Kiem Tra: "<<maSo<<endl;
+		   cout<<"Ma so Ton Tai."<<endl;
+		}
+	    else{
+	       cout<<"Ma so can Kiem Tra: "<<maSo<<endl;
+		   cout<<"Khong Ton Tai !!!!"<<endl;
+        }
+    }
+}
+
+void timSvTheoMaso(SV a[], int n, string maSo) {
+	cout<<"maSo Sinh vien can tim: ";
+	cin>>maSo;
+	for(int i = 0; i <n; i++){
+		if(a[i].maSo == maSo){
+		   cout<<"Sinh vien co maso can tim la: "<<maSo<<endl;
+		   a[i].in();
+		}
+	    else{
+	       cout<<"Ma so ''"<<maSo<<"'' can tim khong co trong danh sach: "<<endl;
+        }
+    } 
+}
+void xoaOneSV(SV a[], int n, string maSo){
+    cout<<"maSo Sinh vien can xoa:  ";
+cin>>maSo;
+	for(int i=0;i<n;i++){
+		if(maSo == a[i].maSo){
+			a[i]=a[i+1];
+		}
+	}
+}
+
+int main(){
+    SV a[100];
+	int n;
+    int y;
+    cout<<"Menu:"<<endl;
+    cout<<"     ======================================== "<<endl;
+    cout<<"     ** 1.Nhap thong tin Sinhvien.         ** "<<endl;
+    cout<<"     ** 2.In danh sach Sinhvien.           ** "<<endl;
+    cout<<"     ** 3.Tong Sinh vien hien tai.         ** "<<endl;
+    cout<<"     ** 4.Xoa 'All' Sinh vien.             ** "<<endl;
+    cout<<"     ** 5.Kiem tra ton tai Sinh vien.      ** "<<endl;
+    cout<<"     ** 6.Tim Sinh Vien (theo Maso).       ** "<<endl;
+    cout<<"     ** 7.Xoa 1 Sinh vien (theo Maso).     ** "<<endl;
+    //cout<<"     ** 8.Tong Sinh Vien theo Xep Loai.    ** "<<endl;
+    cout<<"     ======================================== "<<endl;
+    do{
+	cout<<" Your choose is(Nhap '0' se thoat): ";
+	cin>>y;
+	cout<<"------------------------------------------------------------------------------------------------------------------------"<<endl;
+    switch(y){
+    	case 1:{
+    		a[n].nhap();
+    		++n;
+    	    break;
+		}
+		case 2:{
+			cout<<"Sinh vien moi them vao: "<<endl;
+			inDanhSach(a,n);
+			break;
+		}
+		case 3:{
+			cout<<"Tong Sinh vien: "<<n<<endl;
+			break;
+		}
+		case 4:{
+			xoaTongSV(a,n);
+		    cout<<"Tong Sinh vien da xoa: "<<n<<endl;
+			break;
+		}
+		case 5:{
+			string maSo;
+			kiemTraMasoTonTai(a,n,maSo);
+			break;
+		}
+		case 6:{
+			string maSo;
+			timSvTheoMaso(a,n,maSo);
+			break;
+		}
+		case 7:{
+			string maSo;
+			xoaOneSV(a,n,maSo);
+			n--;
+			break;
+		}
+	}
+}while(y!=0);
+}
+
