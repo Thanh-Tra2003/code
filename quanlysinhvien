@@ -2,7 +2,7 @@
 using namespace std;
 
 struct SV{
-	string maSo, ten, Lop, ngaySinh, diemRenLuyen;
+	chuỗi maSo, ten, Lop, ngaySinh, diemRenLuyen;
 	double anten, tinHieu, tinHoc, lapTrinh, tiengAnh;
 	void in(){
 		cout<<"Ma so :"<<maSo<<endl;
